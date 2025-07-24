@@ -1,0 +1,10 @@
+{
+	"jugador": {
+		"posicion": {
+			"x": "0",
+			"y": "0"
+		},
+		"puntaje": 0,
+		"vida": 100
+	}
+}

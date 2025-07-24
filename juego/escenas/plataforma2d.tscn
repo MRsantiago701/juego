@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://tek1q1635n8b"]
+
+[ext_resource type="Script" uid="uid://dipy6x6pvraws" path="res://codigos/plataforma2d.gd" id="1_ddjc5"]
+[ext_resource type="Texture2D" uid="uid://dkryrxx7qy4ie" path="res://mapa/PS_Tileset_06.png" id="2_xiiia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7gy0"]
+size = Vector2(44.5, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c42lv"]
+size = Vector2(44, 12.5)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_ddjc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xiiia")
+hframes = 4
+vframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -4)
+shape = SubResource("RectangleShape2D_s7gy0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisionShape2D"]
+position = Vector2(-7.5, 3.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/StaticBody2D"]
+position = Vector2(7.75, 3.75)
+shape = SubResource("RectangleShape2D_c42lv")
+debug_color = Color(0.89776, 0.258145, 0.468102, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

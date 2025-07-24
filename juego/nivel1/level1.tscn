@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://i8v87fcsi1eh"]
+
+[ext_resource type="Texture2D" uid="uid://bhqvy47t0fpsu" path="res://mapa/mountains_b.png" id="1_i2kp7"]
+[ext_resource type="PackedScene" uid="uid://bvdn3g812aqbc" path="res://escenas/platform.tscn" id="2_mlugg"]
+[ext_resource type="PackedScene" uid="uid://bbmehsntrkkfr" path="res://escenas/object.tscn" id="3_8lpck"]
+[ext_resource type="PackedScene" uid="uid://bvse5ons0mvgi" path="res://escenas/jugador.tscn" id="4_ebijb"]
+[ext_resource type="Script" uid="uid://bi7ea1e3x7ywf" path="res://codigos/jugador.gd" id="5_h4uui"]
+[ext_resource type="Texture2D" uid="uid://dp31jgux4p7p3" path="res://mapa/lava.png" id="6_m21ow"]
+[ext_resource type="Texture2D" uid="uid://15g43emlwdxo" path="res://mapa/log_wall.png" id="7_gquhl"]
+[ext_resource type="Texture2D" uid="uid://k4gjf0lfrph5" path="res://mapa/Door.png" id="8_dlxa1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oor4s"]
+size = Vector2(1142, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa8pn"]
+size = Vector2(517, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqa1"]
+size = Vector2(45, 41)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MountainsB" type="Sprite2D" parent="."]
+position = Vector2(87.5, -64.5)
+scale = Vector2(4.41016, 3.63281)
+texture = ExtResource("1_i2kp7")
+
+[node name="Area2D" parent="." instance=ExtResource("2_mlugg")]
+position = Vector2(105, 43)
+
+[node name="Area2D2" parent="." instance=ExtResource("2_mlugg")]
+position = Vector2(311, 4)
+
+[node name="Area2D3" parent="." instance=ExtResource("2_mlugg")]
+position = Vector2(208, 22)
+
+[node name="Area2D4" parent="." instance=ExtResource("3_8lpck")]
+position = Vector2(107, -10)
+
+[node name="Area2D5" parent="." instance=ExtResource("3_8lpck")]
+position = Vector2(310, -28)
+
+[node name="Area2D6" parent="." instance=ExtResource("3_8lpck")]
+position = Vector2(211, -6)
+
+[node name="Personaje" parent="." instance=ExtResource("4_ebijb")]
+position = Vector2(-442, 68)
+script = ExtResource("5_h4uui")
+
+[node name="Area2D7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+position = Vector2(90, 246)
+shape = SubResource("RectangleShape2D_oor4s")
+
+[node name="Lava" type="Sprite2D" parent="."]
+position = Vector2(98, 217)
+scale = Vector2(2.97917, 3.27083)
+texture = ExtResource("6_m21ow")
+
+[node name="LogWall" type="Sprite2D" parent="."]
+position = Vector2(-442.5, 147)
+scale = Vector2(3.84375, 2.08333)
+texture = ExtResource("7_gquhl")
+
+[node name="LogWall2" type="Sprite2D" parent="."]
+position = Vector2(-370.75, 143)
+scale = Vector2(4.67187, 1.9375)
+texture = ExtResource("7_gquhl")
+
+[node name="LogWall3" type="Sprite2D" parent="."]
+position = Vector2(-285.75, 142)
+scale = Vector2(5.42188, 2.125)
+texture = ExtResource("7_gquhl")
+
+[node name="LogWall4" type="Sprite2D" parent="."]
+position = Vector2(-209.5, 140)
+scale = Vector2(5.21875, 2.125)
+texture = ExtResource("7_gquhl")
+
+[node name="LogWall5" type="Sprite2D" parent="."]
+position = Vector2(-111, 139)
+scale = Vector2(7.10938, 2.20833)
+texture = ExtResource("7_gquhl")
+
+[node name="LogWall6" type="Sprite2D" parent="."]
+position = Vector2(-1, 134)
+scale = Vector2(6.3125, 2.27083)
+texture = ExtResource("7_gquhl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-5, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-211, 115)
+shape = SubResource("RectangleShape2D_qa8pn")
+
+[node name="Area2D8" type="Area2D" parent="."]
+
+[node name="Door" type="Sprite2D" parent="Area2D8"]
+position = Vector2(371.5, -32)
+scale = Vector2(2.09375, 1.6875)
+texture = ExtResource("8_dlxa1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D8"]
+position = Vector2(371, -32)
+shape = SubResource("RectangleShape2D_2lqa1")
+
+[connection signal="body_entered" from="Area2D7" to="Personaje" method="_on_area_2d_7_body_entered"]
+[connection signal="body_entered" from="Area2D8" to="Personaje" method="_on_area_2d_8_body_entered"]
