@@ -286,6 +286,8 @@ guardar y descargar
 # videos 🎥
 "https://youtu.be/kFTfPvauqew?si=w_3LnF8-RLZ9tZ_f"
 
+"https://youtu.be/QQvCuc4jf4U?si=9bsM0Rd1OcORCOdP"
+
 # Comentarios finales sobre la experiencia del desarrollo
 
 Creo que la configuración de las cosas fueron un reto para poder
